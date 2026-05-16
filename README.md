@@ -10,7 +10,7 @@ Built specifically for AIDB. Not a generic podcast tool.
 
 ## What it does
 
-Paste in an episode title, summary, and timestamps. Select your target platforms. The engine generates ready to post content for LinkedIn, X (thread), Instagram, newsletter, and YouTube descriptions — each in a separate Claude API call so output stays under token limits and results stream in incrementally as they complete.
+Paste in an episode title, summary, and timestamps. Select your target platforms. The engine generates ready-to-post content for LinkedIn, X (thread), Instagram, newsletter, and YouTube descriptions — each in a separate Claude API call so results stream in incrementally as they complete.
 
 Every prompt is loaded with AIDB's editorial voice brief: analytically serious, slightly contrarian, treats headlines as evidence of larger patterns, never hysterical. The output reads like the show, not a marketing recap.
 
@@ -27,39 +27,7 @@ Platform outputs:
 
 ## How to run it
 
-### Option A — Claude.ai artifact (fastest)
-
-Open the file in Claude.ai as a React artifact. No setup, no API key management. Anthropic handles auth. Works immediately.
-
-### Option B — Replit
-
-1. Create a new Replit using the **React (Vite)** template
-2. Go to **Secrets** and add: `VITE_ANTHROPIC_API_KEY` = your Anthropic API key
-3. In `index.html`, add to `<head>`:
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
-```
-4. Replace `src/App.jsx` with the contents of `App.jsx` in this repo
-5. Click **Run**
-
-### Option C — Local (Vite)
-
-```bash
-git clone https://github.com/[YOUR_USERNAME]/aidb-shareability-engine
-cd aidb-shareability-engine
-npm create vite@latest . -- --template react
-npm install
-```
-
-Create a `.env` file in the project root:
-```
-VITE_ANTHROPIC_API_KEY=your_key_here
-```
-
-Add the Tabler Icons CDN link to `index.html`, replace `src/App.jsx`, then:
-```bash
-npm run dev
-```
+Open `App.jsx` in Claude.ai as a React artifact. No setup, no API key management. Works immediately.
 
 ---
 
@@ -74,10 +42,11 @@ npm run dev
 
 ## Notes
 
-- Each platform generates in a separate API call. This is intentional — combining them into one call hits the output token limit and breaks JSON parsing mid-response.
-- The voice brief embedded in every prompt is specific to AIDB's editorial character. Swap it out for a different show's voice brief and the engine works for any podcast.
-- Show name is an editable field. The prompt enforces exact show name usage and blocks model inference from host identity (relevant: NLW is associated with The Breakdown, the prior show name).
+- Each platform generates in a separate API call. This is intentional — combining them hits the output token limit and breaks JSON parsing mid-response.
+- The voice brief is specific to AIDB's editorial character. Swap it out and the engine works for any show.
+- Show name is an editable field. The prompt enforces exact show name usage and blocks model inference from host identity (NLW is associated with The Breakdown, the prior show name — this prevents bleed-through).
 
 ---
 
 Built by Jaye — [nulmnt.com](https://nulmnt.com)
+
